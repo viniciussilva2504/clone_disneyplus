@@ -25,12 +25,12 @@
             <ul class="hero__content__combos">
                 <li class="hero__content__combos__combo">
                     <img src="./dist/images/images/logos/disney_star_plus.png" alt="logo disney star plus">
-                    <button>Assine agora</button>
+                    <button class="button">Assine agora</button>
                     <span class="text">R$45,90/ mês</span>
                 </li>
                 <li class="hero__content__combos__combo">
                     <img src="./dist/images/images/logos/disney_star_plus.png" alt="logo disney star plus">
-                    <button>Assine agora</button>
+                    <button class="button">Assine agora</button>
                     <span class="text">R$45,90/ mês</span>
                 </li>
             </ul>
@@ -39,5 +39,117 @@
             </p>
         </div>
     </section>
+    <!--  Navegação títulos  -->
+    <section class="shows">
+        <nav class="shows__tabs">
+            <button data-tab-button="em_breve" class="shows__tabs__button shows__tabs__button--is-active">
+                Em Breve
+            </button>
+            <button data-tab-button="populares" class="shows__tabs__button">
+                Mais populares
+            </button>
+            <button data-tab-button="star_plus" class="shows__tabs__button">
+                Mais no Star +
+            </button>
+        </nav>
+        <!--  Lista de títulos em breve  -->
+        <ul data-tab-id="em_breve" class="shows__list shows__list--is-active">
+            <li class="shows__list__item">
+                <img src="./dist/images/images/em_breve/desencantada.jpg" alt="Desencantada">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/em_breve/lobisomem.jpg" alt="Lobisomem">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/em_breve/sem_limites.jpg" alt="sem limites">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/em_breve/spidey.jpg" alt="Spidey">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/em_breve/the_santa_clauses.jpg" alt="The Santa Clauses">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/em_breve/willow.jpg" alt="Willow">
+            </li>
+        </ul>
+        <!--  Lista de títulos populares  -->
+        <ul data-tab-id="populares" class="shows__list">
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_populares/bluey.jpg" alt="Bluey">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_populares/cavaleira_da_lua.jpg" alt="Cavaleira da Lua">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_populares/o_incrivel_dr_pol.jpg" alt="O incrível Dr. Pol">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_populares/obi_wan.jpg" alt="Obi-Wan Kenobi">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_populares/red.jpg" alt="Red">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_populares/tudo_igual_sqn.jpg" alt="Tudo igual, sqn">
+            </li>
+        </ul>
+        <!--  Lista de títulos + no Starplus  -->
+        <ul data-tab-id="star_plus" class="shows__list">
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_no_star_plus/belair.jpg" alt="Belair">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_no_star_plus/libertadores.jpg" alt="Libertadores">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_no_star_plus/nba.jpg" alt="NBA">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_no_star_plus/os_simpson.jpg" alt="Os Simpson">
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_no_star_plus/premier_league.jpg" alt="Premier League">      
+            </li>
+            <li class="shows__list__item">
+                <img src="./dist/images/images/mais_no_star_plus/the_kardashians.jpg" alt="The Kardashians">    
+            </li>
+        </ul>
+    </section>
+    <!--  Planos de assinatura  -->
+    <section class="plans">
+        <h2 class="title--big">Escolha seu plano</h2>
+        <ul class="plans__list">
+            <li class="plans__list__item">
+                <img src="./dist/images/images/logos/disneyplus_underline.png" alt="Disney star+">
+                <strong class="title--small">R$27,90/ mês*</strong>
+                <p class="text--big">
+                    No Disney+ você encontra as últimas estréias do cinema. Originais e clássicos inesquecíveis.
+                </p>
+                <button class="button">Assine agora</button>
+            </li>
+            <li class="plans__list__item">
+                <img src="./dist/images/images/logos/disney_star_plus_sm.png" alt="Disney star+">
+                <strong class="title--small">R$45,90/ mês*</strong>
+                <p class="text--big">
+                    No Disney+ você encontra as últimas estréias do cinema. Originais e clássicos inesquecíveis.
+                </p>
+                <button class="button">Assine agora</button>
+            </li>
+            <li class="plans__list__item">
+                <img src="./dist/images/images/logos/disney_star_plus_starzplay_underline.png" alt="Disney star+">
+                <strong class="title--small">R$55,90/ mês*</strong>
+                <p class="text--big">
+                    No Disney+ você encontra as últimas estréias do cinema. Originais e clássicos inesquecíveis.
+                </p>
+                <button class="button">Assine agora</button>
+            </li>
+        </ul>
+        <p class="text--small">
+            *O preço pode variar caso assinatura seja feita através de outras plataformas.
+        </p>
+    </section>
+    <!--  Scripts arquivo javascript  -->
+    <script src="./src/main.js"></script>
 </body>
 </html>

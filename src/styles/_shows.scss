@@ -1,0 +1,49 @@
+@use 'variaveis';
+
+.shows {
+    padding: 2vw 5.6vw;
+    min-height: 50vw;
+    &__list {
+        font-family: Avenir, sans-serif;
+        margin-top: 44px;
+        display: none;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+
+        &--is-active {
+            font-family: Avenir, sans-serif;
+            display: grid;
+        }
+
+        &__item {
+            img {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    &__tabs { //menu de navegação//
+        display: flex;
+        justify-content: center;
+        font-family: Avenir, sans-serif;
+
+        &__button { //botão de navegação//
+            font-family: Avenir, sans-serif;
+            color: variaveis.$corTextoSecundario;
+            font-size: 20px;
+            border: none; //tirar a borda do botão para inserir uma válida//
+            padding-bottom: 5px;
+            background: none;
+            text-transform: uppercase;
+            margin: 0 1vw;
+            cursor: pointer;
+            border-bottom: 5px solid transparent;
+
+            &--is-active {
+                border-color: variaveis.$corTextoSecundario;
+                font-family: Avenir, sans-serif;
+            }
+        }
+    }
+}
