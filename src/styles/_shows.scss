@@ -10,6 +10,11 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 24px;
 
+        //responsividade celular
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr; //divide a tela em duas fr e não em 3
+        }
+
         &--is-active {
             font-family: Avenir, sans-serif;
             display: grid;
@@ -27,6 +32,11 @@
         display: flex;
         justify-content: center;
         font-family: Avenir, sans-serif;
+        @media (max-width:768px) {
+            white-space: nowrap;
+            overflow-x: scroll;
+            padding-left: 20px;
+        }
 
         &__button { //botão de navegação//
             font-family: Avenir, sans-serif;
@@ -43,6 +53,9 @@
             &--is-active {
                 border-color: variaveis.$corTextoSecundario;
                 font-family: Avenir, sans-serif;
+            }
+            @media(max-width: 768px) {
+                font-size: 16px;
             }
         }
     }
