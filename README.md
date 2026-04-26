@@ -1,11 +1,11 @@
-<div align="center">
+﻿<div align="center">
   <img src="https://clone-disneyplus-mu-two.vercel.app/dist/images/images/disneyplus.svg"
-       alt="Logo Disney+" width="200" />
+       alt="Disney+ Logo" width="200" />
 
-  <h1>Clone Disney+</h1>
+  <h1>Disney+ Clone</h1>
 
-  <p>Recriação fiel da landing page do Disney+ com análise de estilo,
-  responsividade garantida e pipeline de build automatizado.</p>
+  <p>Faithful recreation of the Disney+ landing page with style analysis,
+  guaranteed responsiveness and an automated build pipeline.</p>
 
   <p>
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
@@ -16,154 +16,186 @@
   </p>
 
   <a href="https://clone-disneyplus-mu-two.vercel.app">
-    🚀 Ver Demo ao Vivo
+    Live Demo
   </a>
 </div>
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-| Desktop                                                | Mobile                                               |
-| ------------------------------------------------------ | ---------------------------------------------------- |
-| ![Hero Desktop](docs/screenshots/desktop_hero.png)     | ![Hero Mobile](docs/screenshots/mobile_hero.png)     |
-| ![Planos Desktop](docs/screenshots/desktop_planos.png) | ![Planos Mobile](docs/screenshots/mobile_planos.png) |
+| Desktop | Mobile |
+|---|---|
+| ![Hero Desktop](docs/screenshots/desktop_hero.png) | ![Hero Mobile](docs/screenshots/mobile_hero.png) |
+| ![Plans Desktop](docs/screenshots/desktop_planos.png) | ![Plans Mobile](docs/screenshots/mobile_planos.png) |
 
-> Gera screenshots automaticamente com `npm run screenshot`
-
----
-
-## ✨ Funcionalidades
-
-- ✅ Recriação fiel da landing page oficial do Disney+
-- ✅ Layout totalmente responsivo (mobile-first)
-- ✅ Carrosséis de conteúdo ("Em Breve", "Mais Populares", "Star+")
-- ✅ Secção de planos e preços
-- ✅ Lista de dispositivos compatíveis
-- ✅ FAQ interativo
-- ✅ Pipeline de build automatizado com Gulp 4
-- ✅ Optimização de imagens automática
-- ✅ Deployado no Vercel com CI/CD
+> Auto-generate screenshots with ``npm run screenshot``
 
 ---
 
-## 🛠️ Stack
+## Features
 
-| Tecnologia        | Versão | Uso                                |
-| ----------------- | ------ | ---------------------------------- |
-| HTML5             | —      | Estrutura semântica                |
-| SCSS              | 1.x    | Estilização com variáveis e mixins |
-| JavaScript        | ES6+   | Interactividade                    |
-| Gulp              | 4.x    | Build tool e automação             |
-| gulp-sass         | 5.x    | Compilação SCSS → CSS              |
-| gulp-autoprefixer | 8.x    | Prefixos CSS cross-browser         |
-| gulp-clean-css    | 4.x    | Minificação CSS optimizada         |
-| gulp-sourcemaps   | 3.x    | Source maps para DevTools          |
-| gulp-imagemin     | 7.x    | Optimização de imagens             |
-| browser-sync      | 2.x    | Live reload em desenvolvimento     |
-| Vercel            | —      | Deploy e hosting                   |
+- Faithful recreation of the official Disney+ landing page
+- Fully responsive layout (mobile-first)
+- Content carousels ("Coming Soon", "Most Popular", "Star+")
+- Subscription plans section with pricing
+- Compatible devices list
+- Interactive FAQ accordion
+- Automated build pipeline with Gulp 4
+- Automatic image optimisation (JPEG, PNG, WebP via Sharp)
+- Native WebP delivery with picture fallback
+- Deployed to Vercel with CI/CD
 
 ---
 
-## 📁 Estrutura do Projecto
+## Stack
+
+| Technology | Version | Usage |
+|---|---|---|
+| HTML5 | - | Semantic structure |
+| SCSS | 1.x | Variables, mixins, 7-1 architecture |
+| JavaScript | ES6+ | Interactivity, keyboard navigation |
+| Gulp | 4.x | Build tool and task automation |
+| gulp-sass | 6.x | SCSS to CSS compilation |
+| gulp-autoprefixer | 8.x | Cross-browser CSS prefixes |
+| gulp-clean-css | 4.x | Optimised CSS minification |
+| gulp-sourcemaps | 3.x | Source maps for DevTools |
+| sharp | 0.33.x | Image optimisation + WebP generation |
+| browser-sync | 2.x | Live reload in development |
+| ESLint | - | JavaScript linting |
+| Stylelint | - | SCSS linting |
+| Prettier | - | Code formatting |
+| Vercel | - | Deploy and hosting |
+
+---
+
+## Project Structure
 
 ```
 clone_disneyplus/
-├── src/
-│   ├── scss/
-│   │   ├── abstracts/       ← variáveis, mixins, funções
-│   │   ├── base/            ← reset global, tipografia
-│   │   ├── components/      ← header, hero, shows, plans, faq, footer...
-│   │   ├── layout/          ← grid, secções de imagem-texto
-│   │   └── main.scss        ← ponto de entrada (apenas @use)
-│   ├── scripts/
-│   │   └── main.js
-│   └── images/
-├── dist/                    ← gerado pelo Gulp (não editar)
-├── docs/
-│   └── screenshots/         ← gerado pelo script de screenshots
-├── scripts/
-│   └── screenshot.js        ← script automático de screenshots
-├── index.html
-├── gulpfile.js
-├── package.json
-└── README.md
++-- src/
+|   +-- scss/
+|   |   +-- abstracts/       <- variables, mixins, functions
+|   |   +-- base/            <- global reset, typography, accessibility
+|   |   +-- components/      <- header, hero, shows, plans, faq, footer
+|   |   +-- layout/          <- grid, image-text sections
+|   |   +-- main.scss        <- entry point (@use only)
+|   +-- scripts/
+|   |   +-- main.js
+|   +-- images/
++-- dist/                    <- generated by Gulp (do not edit)
++-- docs/
+|   +-- screenshots/         <- generated by the screenshot script
++-- scripts/
+|   +-- screenshot.js        <- Puppeteer screenshot script
++-- .github/
+|   +-- workflows/
+|       +-- build.yml        <- CI: lint, format check, build, Lighthouse
++-- index.html
++-- gulpfile.js
++-- package.json
++-- README.md
 ```
 
 ---
 
-## 🚀 Como Executar Localmente
+## Running Locally
 
-### Pré-requisitos
+### Prerequisites
 
-- Node.js ≥ 16.x
-- npm ≥ 8.x
+- Node.js >= 18.x
+- npm >= 9.x
 
-### Instalação
+### Installation
 
 ```bash
-# 1. Clonar o repositório
+# 1. Clone the repository
 git clone https://github.com/viniciussilva2504/clone_disneyplus.git
 cd clone_disneyplus
 
-# 2. Instalar dependências
+# 2. Install dependencies
 npm install
 
-# 3. Iniciar em modo desenvolvimento (com live reload)
+# 3. Start in development mode (with live reload)
 npm run dev
 ```
 
-O browser abrirá automaticamente em `http://localhost:3000`.
+The browser opens automatically at http://localhost:3000.
 
-### Build para produção
+### Production build
 
 ```bash
 npm run build
 ```
 
-Os ficheiros compilados ficam na pasta `dist/`.
+Compiled files are output to the dist/ folder.
 
-### Gerar screenshots
+### Linting
+
+```bash
+npm run lint        # JS + SCSS
+npm run lint:js     # JavaScript only
+npm run lint:css    # SCSS only
+```
+
+### Code formatting
+
+```bash
+npm run format      # runs Prettier on all files
+```
+
+### Generate screenshots
 
 ```bash
 npm run screenshot
 ```
 
-Os screenshots são guardados em `docs/screenshots/` e podem ser usados directamente neste README.
+Screenshots are saved to docs/screenshots/ and can be used directly in this README.
 
 ---
 
-## 📐 Arquitectura SCSS
+## SCSS Architecture
 
-O projecto segue o padrão **7-1** para organização de SCSS:
+The project follows the 7-1 pattern for SCSS organisation:
 
 ```
-abstracts/   ← variáveis ($color-primary, $font-primary), mixins, funções
-base/        ← reset global, tipografia base, @font-face
-components/  ← um ficheiro por componente (header, hero, shows, plans, faq, footer...)
-layout/      ← grid e estrutura das secções de imagem-texto
-main.scss    ← apenas @use e @forward, sem CSS directo
+abstracts/   <- design tokens, mixins, functions
+base/        <- global reset, base typography, accessibility helpers
+components/  <- one file per component (header, hero, shows, plans, faq, footer)
+layout/      <- grid and image-text section structure
+main.scss    <- @use and @forward only, no direct CSS
 ```
 
 ---
 
-## 🎨 Decisões de Design
+## Design Decisions
 
-- **Cor de fundo:** `#040714` — idêntica ao Disney+ original
-- **Cor primária:** `#0063e5` — botões e CTAs
-- **Tipografia:** Avenir / Helvetica Neue (stack sem serifa moderna)
-- **Breakpoints:** 480px (mobile), 768px (tablet), 1024px (desktop)
-
----
-
-## 🔗 Links
-
-- **Demo:** https://clone-disneyplus-mu-two.vercel.app
-- **Portfólio:** https://github.com/viniciussilva2504
+- Background colour: #040714 - identical to the original Disney+
+- Primary colour: #0063e5 - buttons and CTAs
+- Typography: Avenir / Helvetica Neue (modern sans-serif stack)
+- Breakpoints: 480px (mobile), 768px (tablet), 1024px (desktop)
 
 ---
 
-## ⚠️ Aviso Legal
+## Accessibility
 
-Este projecto foi desenvolvido exclusivamente para fins educativos e de portfólio.
-Todos os direitos relativos à marca Disney+ pertencem à © The Walt Disney Company.
+- Skip-to-content link for keyboard users
+- role, aria-label, aria-expanded, aria-controls on interactive elements
+- :focus-visible outlines on all interactive elements
+- prefers-reduced-motion media query disables all transitions/animations
+- Full keyboard navigation on tabs and FAQ accordion (Enter / Space)
+- Semantic heading hierarchy
+
+---
+
+## Links
+
+- Live demo: https://clone-disneyplus-mu-two.vercel.app
+- Portfolio: https://github.com/viniciussilva2504
+
+---
+
+## Legal Notice
+
+This project was built exclusively for educational and portfolio purposes.
+All rights related to the Disney+ brand belong to The Walt Disney Company.
