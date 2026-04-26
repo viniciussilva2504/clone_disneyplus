@@ -24,9 +24,9 @@
 
 ## 📸 Screenshots
 
-| Desktop | Mobile |
-|---|---|
-| ![Hero Desktop](docs/screenshots/desktop_hero.png) | ![Hero Mobile](docs/screenshots/mobile_hero.png) |
+| Desktop                                                | Mobile                                               |
+| ------------------------------------------------------ | ---------------------------------------------------- |
+| ![Hero Desktop](docs/screenshots/desktop_hero.png)     | ![Hero Mobile](docs/screenshots/mobile_hero.png)     |
 | ![Planos Desktop](docs/screenshots/desktop_planos.png) | ![Planos Mobile](docs/screenshots/mobile_planos.png) |
 
 > Gera screenshots automaticamente com `npm run screenshot`
@@ -49,19 +49,19 @@
 
 ## 🛠️ Stack
 
-| Tecnologia | Versão | Uso |
-|---|---|---|
-| HTML5 | — | Estrutura semântica |
-| SCSS | 1.x | Estilização com variáveis e mixins |
-| JavaScript | ES6+ | Interactividade |
-| Gulp | 4.x | Build tool e automação |
-| gulp-sass | 5.x | Compilação SCSS → CSS |
-| gulp-autoprefixer | 8.x | Prefixos CSS cross-browser |
-| gulp-clean-css | 4.x | Minificação CSS optimizada |
-| gulp-sourcemaps | 3.x | Source maps para DevTools |
-| gulp-imagemin | 7.x | Optimização de imagens |
-| browser-sync | 2.x | Live reload em desenvolvimento |
-| Vercel | — | Deploy e hosting |
+| Tecnologia        | Versão | Uso                                |
+| ----------------- | ------ | ---------------------------------- |
+| HTML5             | —      | Estrutura semântica                |
+| SCSS              | 1.x    | Estilização com variáveis e mixins |
+| JavaScript        | ES6+   | Interactividade                    |
+| Gulp              | 4.x    | Build tool e automação             |
+| gulp-sass         | 5.x    | Compilação SCSS → CSS              |
+| gulp-autoprefixer | 8.x    | Prefixos CSS cross-browser         |
+| gulp-clean-css    | 4.x    | Minificação CSS optimizada         |
+| gulp-sourcemaps   | 3.x    | Source maps para DevTools          |
+| gulp-imagemin     | 7.x    | Optimização de imagens             |
+| browser-sync      | 2.x    | Live reload em desenvolvimento     |
+| Vercel            | —      | Deploy e hosting                   |
 
 ---
 
