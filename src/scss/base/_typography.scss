@@ -1,0 +1,101 @@
+@use 'sass:color';
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// ─── Fontes ───────────────────────────────────────────────────
+@font-face {
+  font-family: Avenir;
+  src: url(../fonts/fonts/Avenir-Regular.woff2);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Avenir;
+  src: url(../fonts/fonts/Avenir-Bold.woff2);
+  font-weight: 600;
+}
+
+// ─── Classes utilitárias de texto ─────────────────────────────
+.text--big {
+  @include m.text(18px);
+  @media (max-width: v.$bp-tablet) {
+    @include m.text(15px);
+  }
+}
+
+.text {
+  @include m.text;
+}
+
+.text--small {
+  @include m.text(12px);
+  @media (max-width: v.$bp-tablet) {
+    @include m.text(11px);
+  }
+}
+
+.link-text {
+  @include m.text(18px);
+  color: v.$corTextoSecundario;
+  text-decoration: underline;
+}
+
+// ─── Classes utilitárias de títulos ───────────────────────────
+.title--big {
+  @include m.title(38px);
+  @media (max-width: v.$bp-tablet) {
+    @include m.title(26px);
+  }
+}
+
+.title {
+  @include m.title;
+  @media (max-width: v.$bp-tablet) {
+    @include m.title(24px);
+  }
+}
+
+.title--small {
+  @include m.title(25px);
+  @media (max-width: v.$bp-tablet) {
+    @include m.title(22px);
+  }
+}
+
+// ─── Botões ───────────────────────────────────────────────────
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  font-size: 18px;
+  color: v.$corTextoSecundario;
+  background-color: v.$corDeFundoBotaoPrimario;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 8px 14px;
+  letter-spacing: 1px;
+  border: 1px solid v.$corDeFundoBotaoPrimario;
+
+  &:hover {
+    background-color: color.adjust(v.$corDeFundoBotaoPrimario, $lightness: 3%);
+  }
+
+  &--secondary {
+    background-color: v.$corDeFundoBotaoSecundario;
+    border-color: v.$corDeFundoBotaoSecundario;
+    &:hover {
+      background-color: color.adjust(v.$corDeFundoBotaoSecundario, $lightness: 3%);
+    }
+  }
+
+  &--dark {
+    background-color: rgba(v.$corDeFundoBotaoDark, 0.8);
+    border-color: v.$corTextoSecundario;
+    &:hover {
+      background-color: v.$corTextoSecundario;
+      color: v.$corDeFundo;
+    }
+  }
+}

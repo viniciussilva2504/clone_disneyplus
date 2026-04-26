@@ -1,0 +1,23 @@
+// ─── Ponto de entrada — apenas @use, sem CSS directo ──────────
+
+// Abstracts
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+@use 'abstracts/functions';
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+
+// Components
+@use 'components/header';
+@use 'components/hero';
+@use 'components/shows';
+@use 'components/plans';
+@use 'components/available-devices';
+@use 'components/faq';
+@use 'components/footer';
+
+// Layout
+@use 'layout/grid';
+@use 'layout/sections';
