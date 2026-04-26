@@ -9,11 +9,11 @@ const browserSync = require("browser-sync").create();
 
 // ─── Paths ────────────────────────────────────────────────────
 const paths = {
-  scss:  { src: "src/scss/**/*.scss",          dest: "dist/css"    },
-  js:    { src: "src/scripts/**/*.js",          dest: "dist/js"     },
-  images:{ src: "src/images/**/*",              dest: "dist/images" },
-  fonts: { src: "src/fonts/**/*.{woff,woff2}",  dest: "dist/fonts"  },
-  html:  { src: "*.html" },
+  scss: { src: "src/scss/**/*.scss", dest: "dist/css" },
+  js: { src: "src/scripts/**/*.js", dest: "dist/js" },
+  images: { src: "src/images/**/*", dest: "dist/images" },
+  fonts: { src: "src/fonts/**/*.{woff,woff2}", dest: "dist/fonts" },
+  html: { src: "*.html" },
 };
 
 // ─── SCSS → CSS ───────────────────────────────────────────────
@@ -69,9 +69,9 @@ function fonts() {
 }
 
 // ─── Exports ──────────────────────────────────────────────────
-exports.styles  = styles;
+exports.styles = styles;
 exports.scripts = scripts;
-exports.images  = images;
-exports.fonts   = fonts;
+exports.images = images;
+exports.fonts = fonts;
 exports.default = series(parallel(styles, scripts, images, fonts));
-exports.watch   = serve;
+exports.watch = serve;
