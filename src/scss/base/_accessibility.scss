@@ -1,5 +1,24 @@
 // ─── Accessibility helpers ───────────────────────────────────
 
+// Skip-to-content link (visually hidden until focused)
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 12px 20px;
+  background: #0063e5;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 9999;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+
+  &:focus {
+    top: 0;
+  }
+}
+
 // Respect user's motion preferences
 @media (prefers-reduced-motion: reduce) {
   *,
