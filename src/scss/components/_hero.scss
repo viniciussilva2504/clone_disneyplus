@@ -7,6 +7,10 @@
   text-align: center;
   background-size: cover;
 
+  @media (max-width: variaveis.$bp-desktop) and (min-width: (variaveis.$bp-tablet + 1px)) {
+    background-image: url(../images/images/hero_tablet.jpg);
+  }
+
   @media (max-width: variaveis.$bp-tablet) {
     background-image: url(../images/images/hero_celular.jpeg);
     padding-top: calc(50vw + 25px);
