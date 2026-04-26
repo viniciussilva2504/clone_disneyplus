@@ -1,8 +1,75 @@
+// ─── TMDB Config ─────────────────────────────────────────────
+const TMDB_KEY = document.body.dataset.tmdbKey;
+const TMDB_BASE = 'https://api.themoviedb.org/3';
+const TMDB_IMG = 'https://image.tmdb.org/t/p/w300';
+
+const TMDB_ENDPOINTS = {
+  em_breve: `${TMDB_BASE}/movie/upcoming?language=pt-BR&region=BR&page=1`,
+  populares: `${TMDB_BASE}/movie/popular?language=pt-BR&region=BR&page=1`,
+  star_plus: `${TMDB_BASE}/trending/all/week?language=pt-BR`,
+};
+
+// ─── TMDB Fetch ───────────────────────────────────────────────
+async function fetchShows(tabId) {
+  const list = document.querySelector(`[data-tab-id="${tabId}"]`);
+  if (!list) return;
+
+  if (!TMDB_KEY || TMDB_KEY === 'YOUR_TMDB_API_KEY_HERE') {
+    renderError(list, 'Adiciona a tua chave TMDB em <code>data-tmdb-key</code> no index.html');
+    return;
+  }
+
+  renderSkeletons(list);
+
+  try {
+    const url = `${TMDB_ENDPOINTS[tabId]}&api_key=${TMDB_KEY}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`TMDB ${res.status}`);
+    const data = await res.json();
+    renderPosters(list, data.results.slice(0, 6));
+  } catch (err) {
+    renderError(list, 'Não foi possível carregar os títulos. Tente novamente mais tarde.');
+    console.warn('[TMDB]', err.message);
+  }
+}
+
+function renderSkeletons(list) {
+  list.innerHTML = Array.from({ length: 6 })
+    .map(() => '<li class="shows__list__item shows__list__item--skeleton" aria-hidden="true"></li>')
+    .join('');
+}
+
+function renderPosters(list, results) {
+  const items = results
+    .filter((item) => item.poster_path)
+    .map((item) => {
+      const title = item.title || item.name || 'Título desconhecido';
+      const posterUrl = `${TMDB_IMG}${item.poster_path}`;
+      return `<li class="shows__list__item">
+        <img src="${posterUrl}" alt="${title}" loading="lazy" />
+      </li>`;
+    });
+
+  list.innerHTML = items.length
+    ? items.join('')
+    : '<li class="shows__list__item--error">Sem resultados disponíveis.</li>';
+}
+
+function renderError(list, msg) {
+  list.innerHTML = `<li class="shows__list__item--error">${msg}</li>`;
+}
+
+// ─── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
   const buttons = document.querySelectorAll('[data-tab-button]');
   const questions = document.querySelectorAll('[data-faq-question]');
   const heroSection = document.querySelector('.hero');
   const alturaHero = heroSection.clientHeight;
+
+  // Load all three tabs on startup (parallel)
+  fetchShows('em_breve');
+  fetchShows('populares');
+  fetchShows('star_plus');
 
   //função para acompanhar rolagem no eixo Y (vertical)
   window.addEventListener('scroll', function () {
@@ -73,3 +140,4 @@ function escondeTodasAbas() {
     tabsContainer[i].classList.remove('shows__list--is-active');
   }
 }
+
