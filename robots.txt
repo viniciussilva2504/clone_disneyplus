@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clone-disneyplus-mu-two.vercel.app/sitemap.xml
