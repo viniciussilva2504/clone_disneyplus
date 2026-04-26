@@ -1,21 +1,21 @@
 // ─── Cores Disney+ ────────────────────────────────────────────
-$color-primary:    #0063e5;
-$color-bg:         #040714;
-$color-text:       #f9f9f9;
+$color-primary: #0063e5;
+$color-bg: #040714;
+$color-text: #f9f9f9;
 $color-text-muted: #f0f0f0;
 
 // Aliases em português — compatibilidade com os componentes
-$corDeFundo:                $color-bg;
-$corTextoPrincipal:         silver;
-$corTextoSecundario:        $color-text;
-$corDeFundoBotaoPrimario:   #6421ff;
+$corDeFundo: $color-bg;
+$corTextoPrincipal: silver;
+$corTextoSecundario: $color-text;
+$corDeFundoBotaoPrimario: #6421ff;
 $corDeFundoBotaoSecundario: $color-primary;
-$corDeFundoBotaoDark:       #000;
+$corDeFundoBotaoDark: #000;
 
 // ─── Tipografia ───────────────────────────────────────────────
 $font-primary: 'Avenir', 'Helvetica Neue', Arial, sans-serif;
 
 // ─── Breakpoints ──────────────────────────────────────────────
-$bp-mobile:  480px;
-$bp-tablet:  768px;
+$bp-mobile: 480px;
+$bp-tablet: 768px;
 $bp-desktop: 1024px;
