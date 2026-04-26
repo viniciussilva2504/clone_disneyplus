@@ -78,6 +78,11 @@
   letter-spacing: 1px;
   border: 1px solid v.$corDeFundoBotaoPrimario;
 
+  &:focus-visible {
+    outline: 2px solid v.$corTextoSecundario;
+    outline-offset: 2px;
+  }
+
   &:hover {
     background-color: color.adjust(v.$corDeFundoBotaoPrimario, $lightness: 3%);
   }
