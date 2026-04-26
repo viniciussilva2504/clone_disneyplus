@@ -19,6 +19,7 @@
     "gulp-sass": "^6.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "prettier": "^3.8.3",
     "puppeteer": "^22.0.0",
     "sass": "^1.99.0",
     "stylelint": "^17.9.0",
