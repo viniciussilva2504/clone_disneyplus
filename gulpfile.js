@@ -4,14 +4,16 @@ const autoprefixer = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
-const imagemin = require("gulp-imagemin");
+const through2 = require("through2");
+const sharp = require("sharp");
+const path = require("path");
 const browserSync = require("browser-sync").create();
 
 // ─── Paths ────────────────────────────────────────────────────
 const paths = {
   scss: { src: "src/scss/**/*.scss", dest: "dist/css" },
   js: { src: "src/scripts/**/*.js", dest: "dist/js" },
-  images: { src: "src/images/**/*", dest: "dist/images" },
+  images: { src: ["src/images/**/*", "!src/images/**/__MACOSX/**"], dest: "dist/images" },
   fonts: { src: "src/fonts/**/*.{woff,woff2}", dest: "dist/fonts" },
   html: { src: "*.html" },
 };
@@ -42,17 +44,32 @@ function scripts() {
 }
 
 // ─── Imagens ──────────────────────────────────────────────────
+function sharpOptimize() {
+  return through2.obj(function (file, _, cb) {
+    if (file.isNull() || file.isDirectory()) return cb(null, file);
+
+    const ext = path.extname(file.path).toLowerCase();
+    const handlers = {
+      ".jpg": () => sharp(file.contents).jpeg({ quality: 80, progressive: true }).toBuffer(),
+      ".jpeg": () => sharp(file.contents).jpeg({ quality: 80, progressive: true }).toBuffer(),
+      ".png": () => sharp(file.contents).png({ compressionLevel: 8 }).toBuffer(),
+      ".webp": () => sharp(file.contents).webp({ quality: 80 }).toBuffer(),
+    };
+
+    const handler = handlers[ext];
+    if (!handler) return cb(null, file); // SVGs and other formats pass through unchanged
+
+    handler()
+      .then((buffer) => {
+        file.contents = buffer;
+        cb(null, file);
+      })
+      .catch(() => cb(null, file)); // pass through unprocessable files unchanged
+  });
+}
+
 function images() {
-  return src(paths.images.src)
-    .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 80, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
-        imagemin.svgo({ plugins: [{ removeViewBox: false }] }),
-      ]),
-    )
-    .pipe(dest(paths.images.dest));
+  return src(paths.images.src).pipe(sharpOptimize()).pipe(dest(paths.images.dest));
 }
 
 // ─── BrowserSync ──────────────────────────────────────────────
