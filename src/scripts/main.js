@@ -1,32 +1,17 @@
 // ─── TMDB Config ─────────────────────────────────────────────
-const TMDB_KEY = document.body.dataset.tmdbKey;
-const TMDB_BASE = 'https://api.themoviedb.org/3';
+// Token kept server-side via Vercel env var — see api/tmdb.js
 const TMDB_IMG = 'https://image.tmdb.org/t/p/w300';
-
-const TMDB_ENDPOINTS = {
-  em_breve: `${TMDB_BASE}/movie/upcoming?language=pt-BR&region=BR&page=1`,
-  populares: `${TMDB_BASE}/movie/popular?language=pt-BR&region=BR&page=1`,
-  star_plus: `${TMDB_BASE}/trending/all/week?language=pt-BR`,
-};
 
 // ─── TMDB Fetch ───────────────────────────────────────────────
 async function fetchShows(tabId) {
   const list = document.querySelector(`[data-tab-id="${tabId}"]`);
   if (!list) return;
 
-  if (!TMDB_KEY || TMDB_KEY === 'YOUR_TMDB_API_KEY_HERE') {
-    renderError(list, 'Adiciona a tua chave TMDB em <code>data-tmdb-key</code> no index.html');
-    return;
-  }
-
   renderSkeletons(list);
 
   try {
-    const url = TMDB_ENDPOINTS[tabId];
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${TMDB_KEY}` },
-    });
-    if (!res.ok) throw new Error(`TMDB ${res.status}`);
+    const res = await fetch(`/api/tmdb?tab=${encodeURIComponent(tabId)}`);
+    if (!res.ok) throw new Error(`API ${res.status}`);
     const data = await res.json();
     renderPosters(list, data.results.slice(0, 6));
   } catch (err) {
