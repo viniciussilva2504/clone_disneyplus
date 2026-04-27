@@ -1,45 +1,4 @@
-// ─── Light mode via prefers-color-scheme ─────────────────────
-// Overrides applied when the user's OS/browser prefers a light UI.
-// The Disney+ brand is dark by design; these values produce a
-// high-contrast, readable light variant without altering the brand.
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-bg: #f0f2f5;
-    --color-surface: #ffffff;
-    --color-text: #040714;
-    --color-text-muted: #333344;
-    --color-border: #d0d4de;
-  }
-
-  body {
-    background-color: var(--color-bg, #f0f2f5);
-    color: var(--color-text, #040714);
-  }
-
-  .header {
-    background-color: #e8eaf0;
-  }
-
-  .faq__questions__item {
-    background-color: var(--color-surface, #ffffff);
-    border: 1px solid var(--color-border, #d0d4de);
-
-    &__question {
-      color: var(--color-text, #040714);
-    }
-
-    &__answer {
-      color: var(--color-text-muted, #333344);
-    }
-  }
-
-  .footer {
-    background-color: #e8eaf0;
-    color: var(--color-text-muted, #333344);
-  }
-
-  .plans {
-    background-color: #e8eaf0;
-  }
-}
+// ─── Themes ──────────────────────────────────────────────────
+// Disney+ is a dark-only brand.
+// The dark theme is enforced via base/_reset.scss (background: #040714).
+// No light mode override is applied — the dark aesthetic is intentional.
