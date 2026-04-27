@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-terser');
+const plumber = require('gulp-plumber');
 const through2 = require('through2');
 const sharp = require('sharp');
 const path = require('path');
@@ -21,6 +22,7 @@ const paths = {
 // ─── SCSS → CSS ───────────────────────────────────────────────
 function styles() {
   return src(paths.scss.src)
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(
@@ -37,7 +39,7 @@ function styles() {
 
 // ─── JavaScript ───────────────────────────────────────────────
 function scripts() {
-  return src(paths.js.src).pipe(uglify()).pipe(dest(paths.js.dest)).pipe(browserSync.stream());
+  return src(paths.js.src).pipe(plumber()).pipe(uglify()).pipe(dest(paths.js.dest)).pipe(browserSync.stream());
 }
 
 // ─── Imagens ──────────────────────────────────────────────────
