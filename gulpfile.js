@@ -73,10 +73,7 @@ function sharpOptimize() {
 }
 
 function images() {
-  return src(paths.images.src)
-    .pipe(newer(paths.images.dest))
-    .pipe(sharpOptimize())
-    .pipe(dest(paths.images.dest));
+  return src(paths.images.src).pipe(sharpOptimize()).pipe(dest(paths.images.dest));
 }
 
 // ─── WebP ─────────────────────────────────────────────────────
