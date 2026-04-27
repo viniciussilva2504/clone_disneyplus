@@ -95,7 +95,10 @@ function webp(done) {
     const destPath = path.join(destBase, rel.replace(/\.(jpe?g|png)$/i, '.webp'));
     const destDir = path.dirname(destPath);
     if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
-    return sharp(srcPath).webp({ quality: 80 }).toFile(destPath).catch(() => {});
+    return sharp(srcPath)
+      .webp({ quality: 80 })
+      .toFile(destPath)
+      .catch(() => {});
   });
 
   return Promise.all(tasks).then(() => done());

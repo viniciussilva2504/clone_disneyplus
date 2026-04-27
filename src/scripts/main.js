@@ -22,8 +22,10 @@ async function fetchShows(tabId) {
   renderSkeletons(list);
 
   try {
-    const url = `${TMDB_ENDPOINTS[tabId]}&api_key=${TMDB_KEY}`;
-    const res = await fetch(url);
+    const url = TMDB_ENDPOINTS[tabId];
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${TMDB_KEY}` },
+    });
     if (!res.ok) throw new Error(`TMDB ${res.status}`);
     const data = await res.json();
     renderPosters(list, data.results.slice(0, 6));
