@@ -5,7 +5,7 @@
   <h1>Disney+ Clone</h1>
 
   <p>
-    Recreação fiel da landing page do Disney+ com integração à API real do TMDB,<br/>
+    Recriação fiel da landing page do Disney+ com integração à API real do TMDB,<br/>
     pipeline de build automatizado com Gulp, acessibilidade WCAG e deploy contínuo no Vercel.
   </p>
 
