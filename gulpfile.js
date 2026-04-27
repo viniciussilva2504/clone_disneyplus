@@ -7,7 +7,13 @@ const uglify = require('gulp-terser');
 const plumber = require('gulp-plumber');
 const newer = require('gulp-newer');
 const through2 = require('through2');
-const sharp = require('sharp');
+let sharp;
+try {
+  sharp = require('sharp');
+} catch (e) {
+  console.warn('sharp not available, images will be copied without optimization');
+  sharp = null;
+}
 const path = require('path');
 const browserSync = require('browser-sync').create();
 
@@ -51,6 +57,7 @@ function scripts() {
 function sharpOptimize() {
   return through2.obj(function (file, _, cb) {
     if (file.isNull() || file.isDirectory()) return cb(null, file);
+    if (!sharp) return cb(null, file); // sharp unavailable — copy as-is
 
     const ext = path.extname(file.path).toLowerCase();
     const handlers = {
@@ -97,6 +104,8 @@ function webp(done) {
   }
 
   const files = walk(srcBase);
+  if (!sharp) return done(); // sharp unavailable — skip WebP generation
+
   const tasks = files.map((srcPath) => {
     const rel = path.relative(srcBase, srcPath);
     const destPath = path.join(destBase, rel.replace(/\.(jpe?g|png)$/i, '.webp'));
