@@ -5,8 +5,9 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-terser');
 const plumber = require('gulp-plumber');
-const newer = require('gulp-newer');
-const through2 = require('through2');
+const path = require('path');
+const fs = require('fs');
+const browserSync = require('browser-sync').create();
 let sharp;
 try {
   sharp = require('sharp');
@@ -14,8 +15,6 @@ try {
   console.warn('sharp not available, images will be copied without optimization');
   sharp = null;
 }
-const path = require('path');
-const browserSync = require('browser-sync').create();
 
 // ─── Paths ────────────────────────────────────────────────────
 const paths = {
@@ -53,38 +52,51 @@ function scripts() {
     .pipe(browserSync.stream());
 }
 
-// ─── Imagens ──────────────────────────────────────────────────
-function sharpOptimize() {
-  return through2.obj(function (file, _, cb) {
-    if (file.isNull() || file.isDirectory()) return cb(null, file);
-    if (!sharp) return cb(null, file); // sharp unavailable — copy as-is
-
-    const ext = path.extname(file.path).toLowerCase();
-    const handlers = {
-      '.jpg': () => sharp(file.contents).jpeg({ quality: 80, progressive: true }).toBuffer(),
-      '.jpeg': () => sharp(file.contents).jpeg({ quality: 80, progressive: true }).toBuffer(),
-      '.png': () => sharp(file.contents).png({ compressionLevel: 8 }).toBuffer(),
-      '.webp': () => sharp(file.contents).webp({ quality: 80 }).toBuffer(),
-    };
-
-    const handler = handlers[ext];
-    if (!handler) return cb(null, file); // SVGs and other formats pass through unchanged
-
-    handler()
-      .then((buffer) => {
-        file.contents = buffer;
-        cb(null, file);
-      })
-      .catch(() => cb(null, file)); // pass through unprocessable files unchanged
-  });
+// ─── Imagens — cópia direta (sem through2/sharp no stream) ───
+function images() {
+  return src(paths.images.src, { encoding: false }).pipe(dest(paths.images.dest));
 }
 
-function images() {
-  return src(paths.images.src).pipe(sharpOptimize()).pipe(dest(paths.images.dest));
+// ─── Imagens — otimização via fs + sharp (após cópia) ─────────
+function optimizeImages(done) {
+  if (!sharp) return done();
+
+  function walk(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files = [];
+    for (const e of entries) {
+      if (e.name === '__MACOSX') continue;
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) files.push(...walk(full));
+      else if (/\.(jpe?g|png|webp)$/i.test(e.name)) files.push(full);
+    }
+    return files;
+  }
+
+  const destBase = paths.images.dest;
+  const files = walk(destBase);
+
+  const tasks = files.map((filePath) => {
+    const ext = path.extname(filePath).toLowerCase();
+    let p;
+    if (ext === '.jpg' || ext === '.jpeg') {
+      p = sharp(filePath).jpeg({ quality: 80, progressive: true }).toBuffer();
+    } else if (ext === '.png') {
+      p = sharp(filePath).png({ compressionLevel: 8 }).toBuffer();
+    } else if (ext === '.webp') {
+      p = sharp(filePath).webp({ quality: 80 }).toBuffer();
+    } else {
+      return Promise.resolve();
+    }
+    return p
+      .then((buf) => fs.writeFileSync(filePath, buf))
+      .catch(() => {}); // skip unprocessable files
+  });
+
+  return Promise.all(tasks).then(() => done());
 }
 
 // ─── WebP ─────────────────────────────────────────────────────
-const fs = require('fs');
 
 function webp(done) {
   const srcBase = 'src/images';
@@ -105,7 +117,6 @@ function webp(done) {
 
   const files = walk(srcBase);
   if (!sharp) return done(); // sharp unavailable — skip WebP generation
-
   const tasks = files.map((srcPath) => {
     const rel = path.relative(srcBase, srcPath);
     const destPath = path.join(destBase, rel.replace(/\.(jpe?g|png)$/i, '.webp'));
@@ -130,14 +141,15 @@ function serve() {
 
 // ─── Fontes ───────────────────────────────────────────────────
 function fonts() {
-  return src(paths.fonts.src).pipe(dest(paths.fonts.dest));
+  return src(paths.fonts.src, { encoding: false }).pipe(dest(paths.fonts.dest));
 }
 
 // ─── Exports ──────────────────────────────────────────────────
 exports.styles = styles;
 exports.scripts = scripts;
 exports.images = images;
+exports.optimizeImages = optimizeImages;
 exports.webp = webp;
 exports.fonts = fonts;
-exports.default = series(parallel(styles, scripts, images, webp, fonts));
+exports.default = series(parallel(styles, scripts, fonts), images, optimizeImages, webp);
 exports.watch = serve;
