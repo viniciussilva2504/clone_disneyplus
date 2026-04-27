@@ -5,6 +5,7 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-terser');
 const plumber = require('gulp-plumber');
+const newer = require('gulp-newer');
 const through2 = require('through2');
 const sharp = require('sharp');
 const path = require('path');
@@ -68,7 +69,7 @@ function sharpOptimize() {
 }
 
 function images() {
-  return src(paths.images.src).pipe(sharpOptimize()).pipe(dest(paths.images.dest));
+  return src(paths.images.src).pipe(newer(paths.images.dest)).pipe(sharpOptimize()).pipe(dest(paths.images.dest));
 }
 
 // ─── WebP ─────────────────────────────────────────────────────
