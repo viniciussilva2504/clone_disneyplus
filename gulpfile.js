@@ -40,7 +40,11 @@ function styles() {
 
 // ─── JavaScript ───────────────────────────────────────────────
 function scripts() {
-  return src(paths.js.src).pipe(plumber()).pipe(uglify()).pipe(dest(paths.js.dest)).pipe(browserSync.stream());
+  return src(paths.js.src)
+    .pipe(plumber())
+    .pipe(uglify())
+    .pipe(dest(paths.js.dest))
+    .pipe(browserSync.stream());
 }
 
 // ─── Imagens ──────────────────────────────────────────────────
@@ -69,7 +73,10 @@ function sharpOptimize() {
 }
 
 function images() {
-  return src(paths.images.src).pipe(newer(paths.images.dest)).pipe(sharpOptimize()).pipe(dest(paths.images.dest));
+  return src(paths.images.src)
+    .pipe(newer(paths.images.dest))
+    .pipe(sharpOptimize())
+    .pipe(dest(paths.images.dest));
 }
 
 // ─── WebP ─────────────────────────────────────────────────────
