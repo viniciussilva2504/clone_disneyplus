@@ -19,6 +19,12 @@
     <img src="https://img.shields.io/badge/Gulp-CF4647?style=for-the-badge&logo=gulp&logoColor=white" alt="Gulp"/>
     <img src="https://img.shields.io/badge/TMDB%20API-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white" alt="TMDB API"/>
   </p>
+
+  <br/>
+
+  <img src="docs/demo.gif" alt="Disney+ Clone — demo animado" width="100%"/>
+
+  <sub><em>GIF gerado automaticamente com <code>npm run gif</code></em></sub>
 </div>
 
 ---
