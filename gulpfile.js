@@ -88,9 +88,7 @@ function optimizeImages(done) {
     } else {
       return Promise.resolve();
     }
-    return p
-      .then((buf) => fs.writeFileSync(filePath, buf))
-      .catch(() => {}); // skip unprocessable files
+    return p.then((buf) => fs.writeFileSync(filePath, buf)).catch(() => {}); // skip unprocessable files
   });
 
   return Promise.all(tasks).then(() => done());
