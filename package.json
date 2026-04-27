@@ -12,7 +12,8 @@
     "lint:js": "eslint src/scripts/**/*.js",
     "lint:css": "stylelint src/scss/**/*.scss",
     "lint": "npm run lint:js && npm run lint:css",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "validate:html": "html-validate index.html"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",
@@ -25,6 +26,7 @@
     "gulp-sass": "^6.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser": "^2.1.0",
+    "html-validate": "^10.13.1",
     "prettier": "^3.8.3",
     "puppeteer": "^22.0.0",
     "sass": "^1.99.0",
