@@ -142,4 +142,3 @@ function escondeTodasAbas() {
     tabsContainer[i].classList.remove('shows__list--is-active');
   }
 }
-
