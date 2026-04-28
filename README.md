@@ -2,10 +2,10 @@
   <img src="https://clone-disneyplus-mu-two.vercel.app/dist/images/images/disneyplus.svg"
        alt="Disney+ Logo" width="180" />
 
-  <h1>Disney+ Clone</h1>
+  <h1>Disney + clone page https://clone-disneyplus-mu-two.vercel.app</h1>
 
   <p>
-    Recriação fiel da landing page do Disney+ com integração à API real do TMDB,<br/>
+    Recreação fiel da landing page do Disney+ com integração à API real do TMDB,<br/>
     pipeline de build automatizado com Gulp, acessibilidade WCAG e deploy contínuo no Vercel.
   </p>
 

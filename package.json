@@ -5,34 +5,27 @@
   "author": "Vinicius Silva <viniciussilva2504@github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run dev",
     "dev": "gulp watch",
     "build": "gulp",
     "screenshot": "node scripts/screenshot.js",
+    "gif": "node scripts/demo-gif.js",
     "lint:js": "eslint src/scripts/**/*.js",
     "lint:css": "stylelint src/scss/**/*.scss",
     "lint": "npm run lint:js && npm run lint:css",
-    "format": "prettier --write .",
-    "validate:html": "html-validate index.html"
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "browser-sync": "^3.0.4",
-    "eslint": "^10.2.1",
-    "gulp": "^5.0.1",
+    "browser-sync": "^2.29.3",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
-    "gulp-newer": "^1.4.0",
-    "gulp-plumber": "^1.2.1",
+    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^6.0.1",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-terser": "^2.1.0",
-    "html-validate": "^10.13.1",
-    "prettier": "^3.8.3",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gif-encoder-2": "^1.0.4",
+    "pngjs": "^7.0.0",
     "puppeteer": "^22.0.0",
-    "sass": "^1.99.0",
-    "sharp": "^0.34.5",
-    "stylelint": "^17.9.0",
-    "stylelint-config-standard-scss": "^17.0.0",
-    "through2": "^4.0.2"
+    "sass": "^1.99.0"
   }
 }
