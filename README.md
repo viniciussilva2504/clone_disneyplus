@@ -5,7 +5,7 @@
   <h1>Disney + clone page</h1>
 
   <p>
-    https://clone-disneyplus-mu-two.vercel.app
+    <br>https://clone-disneyplus-mu-two.vercel.app<br/>
     Recriação fiel da landing page do Disney+ com integração à API real do TMDB,<br/>
     pipeline de build automatizado com Gulp, acessibilidade WCAG e deploy contínuo no Vercel.
   </p>
