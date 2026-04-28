@@ -1,14 +1,6 @@
 ﻿<div align="center">
-  <table>
-    <tr>
-      <td bgcolor="#040714" align="center" width="300">
-        <br/>
-        <img src="https://clone-disneyplus-mu-two.vercel.app/dist/images/images/disneyplus.svg"
-             alt="Disney+ Logo" width="180" />
-        <br/><br/>
-      </td>
-    </tr>
-  </table>
+  <img src="https://clone-disneyplus-mu-two.vercel.app/dist/images/images/disneyplus.svg"
+       alt="Disney+ Logo" width="180" />
 
   <h1>Disney + clone page</h1>
 
@@ -31,7 +23,9 @@
 
   <br/>
 
-  <img src="docs/screenshots/desktop_full-page.png" alt="Disney+ Clone — vista completa desktop" width="100%"/>
+  <img src="docs/demo.gif" alt="Disney+ Clone — demo animado" width="100%"/>
+
+  <sub><em>GIF gerado automaticamente com <code>npm run gif</code></em></sub>
 </div>
 
 ---
